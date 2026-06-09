@@ -159,4 +159,71 @@
 
       <div class="buttons" id="letter-buttons">
         <img src="yes.png" alt="Yes" class="btn yes-btn" id="yes-btn">
-        <img src="no.png" alt="No" class="btn no-btn
+        <img src="no.png" alt="No" class="btn no-btn" id="no-btn">
+      </div>
+    </div>
+
+    <h2 id="final-text" class="bottom-title">Happy Birthday Gardener 💌</h2>
+  </div>
+
+  <script>
+    const envelopeContainer = document.getElementById("envelope-container");
+    const letterContainer = document.getElementById("letter-container");
+    const noBtn = document.getElementById("no-btn");
+    const yesBtn = document.getElementById("yes-btn");
+
+    const title = document.getElementById("letter-title");
+    const catImg = document.getElementById("letter-cat");
+    const buttons = document.getElementById("letter-buttons");
+    const finalText = document.getElementById("final-text");
+
+    // கவரை திறப்பதற்கான பொதுவான ஃபங்க்ஷன் (மொபைல் மற்றும் கணினி இரண்டிற்கும்)
+    function openLetter(event) {
+      if (event) event.preventDefault();
+      envelopeContainer.style.display = "none";
+      letterContainer.style.display = "flex";
+
+      setTimeout(() => {
+        const win = document.querySelector(".letter-window");
+        if(win) win.classList.add("open");
+      }, 50);
+    }
+
+    // கிளிக் மற்றும் மொபைல் டச் இரண்டிற்கும் வேலை செய்யும்
+    envelopeContainer.addEventListener("click", openLetter);
+    envelopeContainer.addEventListener("touchstart", openLetter, { passive: false });
+
+    // 'No' பட்டன் ஓடும் லாஜிக்
+    function moveNoButton(event) {
+      if (event) event.preventDefault();
+      
+      const minDistance = 70;
+      const maxDistance = 120;
+
+      const distance = Math.random() * (maxDistance - minDistance) + minDistance;
+      const angle = Math.random() * Math.PI * 2;
+
+      const moveX = Math.cos(angle) * distance;
+      const moveY = Math.sin(angle) * distance;
+
+      noBtn.style.transition = "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+      noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton, { passive: false });
+
+    // 'Yes' கிளிக் செய்தவுடன் மாறும் பக்கங்கள்
+    function handleYesClick(event) {
+      if (event) event.preventDefault();
+      title.textContent = "I was just joking you never get tired anyway… you can keep making me blush moreee..."; 
+      catImg.src = "cat_dance.gif";
+      buttons.style.display = "none";
+      finalText.style.display = "block";
+    }
+
+    yesBtn.addEventListener("click", handleYesClick);
+    yesBtn.addEventListener("touchstart", handleYesClick, { passive: false });
+  </script>
+</body>
+</html>
