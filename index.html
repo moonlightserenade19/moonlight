@@ -150,7 +150,7 @@
   </div>
 
   <div id="letter-container">
-    <h1 id="letter-title" class="top-title">Are you gonna stop making me blush from now on? </h1>
+    <h1 id="letter-title" class="top-title">I feel like you’re getting tired of making me blush already… so you’re gonna stop soon, right?</h1>
     
     <div class="letter-window">
       <div id="cat-img-container">
@@ -159,66 +159,4 @@
 
       <div class="buttons" id="letter-buttons">
         <img src="yes.png" alt="Yes" class="btn yes-btn" id="yes-btn">
-        <img src="no.png" alt="No" class="btn no-btn" id="no-btn">
-      </div>
-    </div>
-
-    <h2 id="final-text" class="bottom-title">Happy Birthday Gardener 💌</h2>
-  </div>
-
-  <script>
-    const envelopeContainer = document.getElementById("envelope-container");
-    const letterContainer = document.getElementById("letter-container");
-    const noBtn = document.getElementById("no-btn");
-    const yesBtn = document.getElementById("yes-btn");
-
-    const title = document.getElementById("letter-title");
-    const catImg = document.getElementById("letter-cat");
-    const buttons = document.getElementById("letter-buttons");
-    const finalText = document.getElementById("final-text");
-
-    // கவரை கிளிக் செய்யும்போது லெட்டர் ஓப்பனாகும்
-    envelopeContainer.addEventListener("click", () => {
-      envelopeContainer.style.display = "none";
-      letterContainer.style.display = "flex";
-
-      setTimeout(() => {
-        document.querySelector(".letter-window").classList.add("open");
-      }, 50);
-    });
-
-    // 'No' பட்டன் ஓடும் லாஜிக்
-    function moveNoButton(event) {
-      if (event) event.preventDefault();
-      
-      const minDistance = 70;
-      const maxDistance = 120;
-
-      const distance = Math.random() * (maxDistance - minDistance) + minDistance;
-      const angle = Math.random() * Math.PI * 2;
-
-      const moveX = Math.cos(angle) * distance;
-      const moveY = Math.sin(angle) * distance;
-
-      noBtn.style.transition = "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-      noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    }
-
-    noBtn.addEventListener("mouseover", moveNoButton);
-    noBtn.addEventListener("touchstart", moveNoButton);
-
-    // 'Yes' கிளிக் செய்தவுடன் மாறும் பக்கங்கள்
-    yesBtn.addEventListener("click", () => {
-      // மேலே இருக்கும் டெக்ஸ்ட் பாக்ஸிற்கு வெளியேயே மாறும்
-      title.textContent = "I was just joking, you can make me blush!"; 
-      
-      // பூனை நடனமாடும்
-      catImg.src = "cat_dance.gif";
-      
-      // பட்டன்கள் மறைந்து, கீழே 'Gardener' டெக்ஸ்ட் தோன்றும்
-      buttons.style.display = "none";
-      finalText.style.display = "block";
-    });
-  </script>
-</body>
-</html>
+        <img src="no.png" alt="No" class="btn no-btn
